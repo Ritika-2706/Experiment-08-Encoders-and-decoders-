@@ -1,4 +1,4 @@
-# Experiment-08- Encoders-and-decoders 
+# Experiment-07- Encoders-and-decoders 
 ### AIM: To implement 8 to 3 Encoder and  3to8 Decoder using verilog and validate its outputs
 ### HARDWARE REQUIRED:  – PC, Cyclone II , USB flasher
 ### SOFTWARE REQUIRED:   Quartus prime
@@ -54,17 +54,65 @@ D7 = X Y Z
 ![image](https://user-images.githubusercontent.com/36288975/171543866-5a6eace6-8683-49d7-9c4f-a7cb30ec3035.png)
 ## Figure -04 8 to 3 Decoder implementation 
 
-### Procedure
-/* write all the steps invloved */
+### Procedure:
+
+Step 1:
+Open Quartus II and select new project and choose the file location.
+
+Step 2:
+Module Declaration. Module should have the file name.
+
+Step 3:
+Input-Output Delecaration.
+
+Step 4:
+Use assign to define the functionality of logic circuits.
+
+Step 5:
+At the end give endmodule.
+
+Step 6:
+Run the program and choose RTL viewer to get RTL realization.
 
 
 
 ### PROGRAM 
 /*
 Program for Endocers and Decoders  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: Ritika S
+RegisterNumber:  212221240046
 */
+### ENCODER
+```
+module encode(a,b,c,d0,d1,d2,d3,d4,d5,d6,d7);
+output a,b,c;
+input d0,d1,d2,d3,d4,d5,d6,d7;
+or(a,d4,d5,d6,d7);
+or(b,d2,d3,d6,d7);
+or(c,d1,d3,d5,d7);
+endmodule
+```
+
+### DECODER
+```
+module dec (a0,a1,a2,y0,y1,y2,y3,y4,y5,y6,y7);
+input a0,a1,a2;
+output y0,y1,y2,y3,y4,y5,y6,y7;
+wire a0bar,a1bar,a2bar;
+not(a0bar,a0);
+not(a1bar,a1);
+not(a2bar,a2);
+and(y0,a0bar,a1bar,a2bar);
+and(y1,a0,a1bar,a2bar);
+and(y2,a0bar,a1,a2bar);
+and(y3,a0,a1,a2bar);
+and(y4,a0bar,a1bar,a2);
+and(y5,a0,a1bar,a2);
+and(y6,a0bar,a1,a2);
+and(y7,a0,a1,a2);
+endmodule
+
+```
 
 
 
@@ -72,21 +120,35 @@ RegisterNumber:
 
 
 ### RTL LOGIC  
+### ENCODER
+![IMG6](https://github.com/Ritika-2706/Experiment-08-Encoders-and-decoders-/assets/93427238/6ea36f8d-0fde-43e6-b9ad-924a59302513)
 
 
-
+### DECODER
+![IMG5](https://github.com/Ritika-2706/Experiment-08-Encoders-and-decoders-/assets/93427238/ee9ebe84-da42-4c70-a4d4-8e07349079e6)
 
 
 
 
 
 ### TIMING DIGRAMS  
+### ENCODER
+![IMG4](https://github.com/Ritika-2706/Experiment-08-Encoders-and-decoders-/assets/93427238/c7765596-5593-4af5-b0dd-7bdea33720b6)
 
 
+### DECODER
+![IMG3](https://github.com/Ritika-2706/Experiment-08-Encoders-and-decoders-/assets/93427238/7b0947ef-1a07-451d-b040-8a49fc197c59)
 
 
 
 ### TRUTH TABLE 
+### ENCODER
+![IMG2](https://github.com/Ritika-2706/Experiment-08-Encoders-and-decoders-/assets/93427238/2acb4fc8-6d35-4f05-9d63-d7c11b887094)
+
+
+### DECODER
+![IMG1](https://github.com/Ritika-2706/Experiment-08-Encoders-and-decoders-/assets/93427238/5f633ec6-8c39-40e8-95b4-ec930dbea6a5)
+
 
 
 
@@ -94,3 +156,4 @@ RegisterNumber:
 
 
 ### RESULTS 
+Thus, 8 to 3 Encoder and 3 to 8 Decoder is implemented using verilog and its outputs is validated.
